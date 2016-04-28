@@ -10,13 +10,13 @@ import random
 def print_click(*params):
 	# body_language = params[2:].split(",")
 	body_language = list(params[2:])
-	print (body_language)
+	#print (body_language)
 	if "N/A" in body_language:
-		print ("BAD DATA")
+		#print ("BAD DATA")
 		return
 	prediction  = clf.predict(body_language)
 	msg = osc_message_builder.OscMessageBuilder(address="/prediction")
-	pred_string = str(prediction[0])
+	pred_string = str(prediction[0], 'utf-8')
 	print (pred_string)
 	msg.add_arg(pred_string)
 	msg = msg.build()
